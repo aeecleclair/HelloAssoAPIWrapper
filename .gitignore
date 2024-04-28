@@ -1,0 +1,15 @@
+# Cache folders
+__pycache__
+.mypy_cache
+.pytest_cache
+.ruff_cache
+
+# macOS
+.DS_Store
+
+# Virtual environment
+.venv
+.python-version
+
+# Pytest-cov
+.coverage
