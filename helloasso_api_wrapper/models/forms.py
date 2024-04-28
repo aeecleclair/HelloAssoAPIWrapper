@@ -4,9 +4,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Annotated
 
-from pydantic import BaseModel, constr
+from pydantic import BaseModel, StringConstraints
 
 if TYPE_CHECKING:
     from datetime import datetime
@@ -111,7 +111,9 @@ class FormQuickCreateRequest(BaseModel):
     projectBeneficiaries: str | None = None
     projectExpensesDetails: str | None = None
     projectOwners: str | None = None
-    projectTargetCountry: constr(min_length=3, max_length=3) | None = None
+    projectTargetCountry: (
+        Annotated[str, StringConstraints(min_length=3, max_length=3)] | None
+    ) = None
     maxEntries: int | None = None
 
 

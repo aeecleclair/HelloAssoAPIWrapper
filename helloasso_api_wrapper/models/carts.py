@@ -4,9 +4,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Annotated, Any
 
-from pydantic import BaseModel, constr
+from pydantic import BaseModel, StringConstraints
 
 if TYPE_CHECKING:
     from datetime import datetime
@@ -20,15 +20,15 @@ class CheckoutTerm(BaseModel):
 
 
 class CheckoutPayer(BaseModel):
-    firstName: constr(max_length=255) | None = None
-    lastName: constr(max_length=255) | None = None
-    email: constr(max_length=255) | None = None
+    firstName: Annotated[str, StringConstraints(max_length=255)] | None = None
+    lastName: Annotated[str, StringConstraints(max_length=255)] | None = None
+    email: Annotated[str, StringConstraints(max_length=255)] | None = None
     dateOfBirth: datetime | None = None
     address: str | None = None
     city: str | None = None
     zipCode: str | None = None
-    country: constr(min_length=3, max_length=3) | None = None
-    companyName: constr(max_length=255) | None = None
+    country: Annotated[str, StringConstraints(min_length=3, max_length=3)] | None = None
+    companyName: Annotated[str, StringConstraints(max_length=255)] | None = None
 
 
 class InitCheckoutResponse(BaseModel):
@@ -39,7 +39,7 @@ class InitCheckoutResponse(BaseModel):
 class InitCheckoutBody(BaseModel):
     totalAmount: int
     initialAmount: int
-    itemName: constr(max_length=250)
+    itemName: Annotated[str, StringConstraints(max_length=250)]
     backUrl: str
     errorUrl: str
     returnUrl: str

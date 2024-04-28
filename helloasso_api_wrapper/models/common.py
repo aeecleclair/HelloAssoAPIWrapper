@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Annotated
 
-from pydantic import BaseModel
+from pydantic import BaseModel, StringConstraints
 
 if TYPE_CHECKING:
     from datetime import datetime
@@ -39,5 +39,5 @@ class PlaceModel(BaseModel):
     name: str | None = None
     city: str | None = None
     zipCode: str | None = None
-    country: constr(min_length=3, max_length=3) | None = None
+    country: Annotated[str, StringConstraints(min_length=3, max_length=3)] | None = None
     geoLocation: shared.GeoLocation | None = None
