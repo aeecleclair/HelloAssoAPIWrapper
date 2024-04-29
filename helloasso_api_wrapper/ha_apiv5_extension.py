@@ -42,7 +42,7 @@ class HaApiV5Extension(HaApiV5):
             refresh_token=refresh_token,
             oauth2_token_getter=oauth2_token_getter,
             oauth2_token_setter=oauth2_token_setter,
-        )  # type: ignore
+        )
 
     PydanticModel = TypeVar("PydanticModel", bound=BaseModel)
 
@@ -60,11 +60,11 @@ class HaApiV5Extension(HaApiV5):
         sub_path = "/v5" + sub_path
         response = self.call(
             sub_path,
-            params=params,  # type: ignore
-            method=method,  # type: ignore
-            data=data,  # type: ignore
-            json=json,  # type: ignore
-            headers=headers,  # type: ignore
+            params=params,
+            method=method,
+            data=data,
+            json=json,
+            headers=headers,
             include_auth=include_auth,
         ).json()
 
@@ -86,11 +86,11 @@ class HaApiV5Extension(HaApiV5):
         sub_path = "/v5" + sub_path
         response = self.call(
             sub_path,
-            params=params,  # type: ignore
-            method=method,  # type: ignore
-            data=data,  # type: ignore
-            json=json,  # type: ignore
-            headers=headers,  # type: ignore
+            params=params,
+            method=method,
+            data=data,
+            json=json,
+            headers=headers,
             include_auth=include_auth,
         ).json()
 
