@@ -4,14 +4,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from datetime import datetime
 
 from pydantic import BaseModel
 
-if TYPE_CHECKING:
-    from datetime import datetime
-
-    from helloasso_api_wrapper.models import common, enums, statistics
+from helloasso_api_wrapper.models import common, enums, statistics
 
 
 class PublicPaymentModel(BaseModel):

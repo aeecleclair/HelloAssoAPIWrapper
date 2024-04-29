@@ -4,16 +4,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from datetime import datetime
 
 from pydantic import BaseModel
 
-from helloasso_api_wrapper.models import enums
-
-if TYPE_CHECKING:
-    from datetime import datetime
-
-    from helloasso_api_wrapper.models import shared
+from helloasso_api_wrapper.models import enums, shared
 
 
 class OrganizationBasicModel(BaseModel):

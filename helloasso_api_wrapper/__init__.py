@@ -1,6 +1,12 @@
 from collections.abc import Callable
 from typing import Literal
 
+from helloasso_api_wrapper.clients.checkout_intents_management import (
+    CheckoutIntentsManagement,
+)
+from helloasso_api_wrapper.clients.organization_visualisation import (
+    OrganizationVisualisation,
+)
 from helloasso_api_wrapper.clients.users import Users
 from helloasso_api_wrapper.ha_apiv5_extension import HaApiV5Extension
 

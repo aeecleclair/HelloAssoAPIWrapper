@@ -4,14 +4,12 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Annotated
+from datetime import datetime
+from typing import Annotated
 
 from pydantic import BaseModel, StringConstraints
 
-if TYPE_CHECKING:
-    from datetime import datetime
-
-    from helloasso_api_wrapper.models import common, enums
+from helloasso_api_wrapper.models import common, enums
 
 
 class FormBasicModel(BaseModel):

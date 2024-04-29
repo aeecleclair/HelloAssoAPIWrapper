@@ -4,14 +4,12 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Annotated, Any
+from datetime import datetime
+from typing import Annotated, Any
 
 from pydantic import BaseModel, StringConstraints
 
-if TYPE_CHECKING:
-    from datetime import datetime
-
-    from helloasso_api_wrapper.models import statistics
+from helloasso_api_wrapper.models import statistics
 
 
 class CheckoutTerm(BaseModel):

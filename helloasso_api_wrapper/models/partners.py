@@ -4,16 +4,13 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from pydantic import BaseModel
 
-if TYPE_CHECKING:
-    from helloasso_api_wrapper.models import (
-        PartnerStatisticsModel,
-        api_notifications,
-        clients,
-    )
+from helloasso_api_wrapper.models import (
+    PartnerStatisticsModel,
+    api_notifications,
+    clients,
+)
 
 
 class PartnerPublicModel(BaseModel):
