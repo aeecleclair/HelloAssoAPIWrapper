@@ -1,8 +1,9 @@
 from collections.abc import Callable
-from typing import Literal, TypeVar
+from enum import Enum
+from typing import Any, Literal, TypeVar
 
 from helloasso_api import HaApiV5
-from pydantic import BaseModel
+from pydantic import BaseModel, TypeAdapter
 
 
 class HaApiV5Extension(HaApiV5):
@@ -44,19 +45,27 @@ class HaApiV5Extension(HaApiV5):
             oauth2_token_setter=oauth2_token_setter,
         )
 
-    PydanticModel = TypeVar("PydanticModel", bound=BaseModel)
+    Model = TypeVar("Model", bound=BaseModel | list | Enum)
+
+    def serialize(
+        self,
+        obj: Any,
+        model: type[Model],
+    ) -> Model:
+        type_adapter = TypeAdapter(model)
+        return type_adapter.validate_python(obj)
 
     def callAndSerialize(
         self,
         sub_path: str,
-        model: type[PydanticModel],
+        model: type[Model],
         params: dict | None = None,
         method: str | None = "GET",
         data: dict | None = None,
         json: dict | None = None,
         headers: dict | None = None,
         include_auth: bool = True,
-    ) -> PydanticModel:
+    ) -> Model:
         sub_path = "/v5" + sub_path
         response = self.call(
             sub_path,
@@ -68,35 +77,4 @@ class HaApiV5Extension(HaApiV5):
             include_auth=include_auth,
         ).json()
 
-        return model.model_validate(
-            response,
-        )
-
-    def callAndSerializeList(
-        self,
-        sub_path: str,
-        model: type[PydanticModel],
-        params: dict | None = None,
-        method: str | None = "GET",
-        data: dict | None = None,
-        json: dict | None = None,
-        headers: dict | None = None,
-        include_auth: bool = True,
-    ) -> list[PydanticModel]:
-        sub_path = "/v5" + sub_path
-        response = self.call(
-            sub_path,
-            params=params,
-            method=method,
-            data=data,
-            json=json,
-            headers=headers,
-            include_auth=include_auth,
-        ).json()
-
-        return [
-            model.model_validate(
-                obj,
-            )
-            for obj in response
-        ]
+        return self.serialize(response, model)
