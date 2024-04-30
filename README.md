@@ -7,3 +7,8 @@ Then you can use the `datamodel-codegen` tool to generate the models:
 ```bash
 datamodel-codegen --input HelloAssoV5OpenAPI.json --output HelloAssoAPIWrapper
 ```
+
+### Notification result webhooks
+
+You should configure a webhook to receive the notification results.
+HelloAsso will make a POST request to the URL you provided with a JSON payload corresponding to a `NotificationResultContent` object.

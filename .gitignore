@@ -13,3 +13,6 @@ __pycache__
 
 # Pytest-cov
 .coverage
+
+helloasso_api_wrapper.egg-info
+build

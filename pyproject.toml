@@ -50,6 +50,8 @@ ignore = [
     "SIM102",
     "SIM105",
     "RUF012", # We may want to enable "Mutable class attributes should be annotated with `typing.ClassVar`"
+    "TCH001", # Pydantic requires import to be made outside of type checking block
+    "TCH003", # Pydantic requires import to be made outside of type checking block
 ]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
