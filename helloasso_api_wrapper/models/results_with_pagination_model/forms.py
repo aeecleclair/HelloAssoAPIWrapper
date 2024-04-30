@@ -4,15 +4,12 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from pydantic import BaseModel
 
-if TYPE_CHECKING:
-    from helloasso_api_wrapper.models import forms
-    from helloasso_api_wrapper.models.common import PaginationModel
+from helloasso_api_wrapper.models import forms
+from helloasso_api_wrapper.models.common import PaginationModel
 
 
-class FormLightModel(BaseModel):
+class PaginatedFormLightModel(BaseModel):
     data: list[forms.FormLightModel] | None = None
     pagination: PaginationModel | None = None

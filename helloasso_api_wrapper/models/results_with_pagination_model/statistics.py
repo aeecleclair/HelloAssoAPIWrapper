@@ -4,25 +4,22 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from pydantic import BaseModel
 
-if TYPE_CHECKING:
-    from helloasso_api_wrapper.models import statistics
-    from helloasso_api_wrapper.models.common import PaginationModel
+from helloasso_api_wrapper.models import statistics
+from helloasso_api_wrapper.models.common import PaginationModel
 
 
-class Item(BaseModel):
+class PaginatedItem(BaseModel):
     data: list[statistics.Item] | None = None
     pagination: PaginationModel | None = None
 
 
-class Payment(BaseModel):
+class PaginatedPayment(BaseModel):
     data: list[statistics.Payment] | None = None
     pagination: PaginationModel | None = None
 
 
-class Order(BaseModel):
+class PaginatedOrder(BaseModel):
     data: list[statistics.Order] | None = None
     pagination: PaginationModel | None = None
