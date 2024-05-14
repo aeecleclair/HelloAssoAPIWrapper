@@ -30,11 +30,15 @@ class CheckoutPayer(BaseModel):
 
 
 class InitCheckoutResponse(BaseModel):
-    id: int | None = None
-    redirectUrl: str | None = None
+    id: int
+    redirectUrl: str
 
 
 class InitCheckoutBody(BaseModel):
+    """
+    When the order or a payment is done, HelloAsso will call the webhook including `metadata` in the `NotificationResultContent` body
+    """
+
     totalAmount: int
     initialAmount: int
     itemName: Annotated[str, StringConstraints(max_length=250)]

@@ -7,7 +7,7 @@ from __future__ import annotations
 from enum import Enum
 
 
-class FormType(Enum):
+class FormType(str, Enum):
     CrowdFunding = "CrowdFunding"
     Membership = "Membership"
     Event = "Event"
@@ -156,3 +156,14 @@ class TagType(Enum):
 class GlobalRole(Enum):
     OrganizationAdmin = "OrganizationAdmin"
     FormAdmin = "FormAdmin"
+
+
+class SortOrder(Enum):
+    Asc = "Asc"
+    Desc = "Desc"
+
+
+class SortField(Enum):
+    Date = "Date"
+    UpdateDate = "UpdateDate"
+    CreationDate = "CreationDate"

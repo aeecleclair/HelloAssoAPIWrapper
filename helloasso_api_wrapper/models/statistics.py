@@ -149,8 +149,8 @@ class Payment(BaseModel):
     cashOutState: enums.PaymentCashOutState | None = None
     paymentReceiptUrl: str | None = None
     fiscalReceiptUrl: str | None = None
-    id: int | None = None
-    amount: int | None = None
+    id: int
+    amount: int
     amountTip: int | None = None
     date: datetime | None = None
     paymentMeans: enums.PaymentMeans | None = None
