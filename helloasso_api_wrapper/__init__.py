@@ -4,6 +4,8 @@ from typing import Literal
 from helloasso_api_wrapper.clients.checkout_intents_management import (
     CheckoutIntentsManagement,
 )
+from helloasso_api_wrapper.clients.directory import Directory
+from helloasso_api_wrapper.clients.forms import Forms
 from helloasso_api_wrapper.clients.organization_visualisation import (
     OrganizationVisualisation,
 )
@@ -45,6 +47,8 @@ class HelloAssoAPIWrapper:
             oauth2_token_getter=oauth2_token_getter,
             oauth2_token_setter=oauth2_token_setter,
         )
+        self.checkout_intents_management = CheckoutIntentsManagement(self.api)
+        self.directory = Directory(self.api)
+        self.forms = Forms(self.api)
         self.organizations = OrganizationVisualisation(self.api)
         self.users = Users(self.api)
-        self.checkout_intents_management = CheckoutIntentsManagement(self.api)
