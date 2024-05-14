@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel
 
@@ -29,35 +29,44 @@ class OrganizationNotificationResultData(BaseModel):
     new_slug_organization: str
 
 
-class NotificationResultContent(BaseModel):
-    """
-    When a new content is available, HelloAsso will call the notification URL callback with the corresponding data in the body.
-    """
-
-    eventType: ApiNotificationType
-    data: (
-        OrganizationNotificationResultData
-        | OrderDetail
-        | PaymentDetail
-        | FormPublicModel
-    )
-
-
 class OrganizationNotificationResultContent(BaseModel):
     eventType: Literal[ApiNotificationType.Organization]
     data: OrganizationNotificationResultData
+    # metadata: dict[str, Any] | None = None # not sure
 
 
 class OrderNotificationResultContent(BaseModel):
+    """
+    metadata should contain the metadata sent while creating the checkout intent in `InitCheckoutBody`
+    """
+
     eventType: Literal[ApiNotificationType.Order]
     data: OrderDetail
+    metadata: dict[str, Any] | None = None
 
 
 class PayementNotificationResultContent(BaseModel):
+    """
+    metadata should contain the metadata sent while creating the checkout intent in `InitCheckoutBody`
+    """
+
     eventType: Literal[ApiNotificationType.Payment]
     data: PaymentDetail
+    metadata: dict[str, Any] | None = None
 
 
 class FormNotificationResultContent(BaseModel):
     eventType: Literal[ApiNotificationType.Form]
     data: FormPublicModel
+    # metadata: dict[str, Any] | None = None # not sure
+
+
+NotificationResultContent = (
+    OrganizationNotificationResultContent
+    | OrderNotificationResultContent
+    | PayementNotificationResultContent
+    | FormNotificationResultContent
+)
+"""
+When a new content is available, HelloAsso will call the notification URL callback with the corresponding data in the body.
+"""
