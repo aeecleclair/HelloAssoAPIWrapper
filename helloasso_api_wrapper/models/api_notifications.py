@@ -7,7 +7,7 @@ from helloasso_api_wrapper.models.forms import FormPublicModel
 from helloasso_api_wrapper.models.statistics import OrderDetail, PaymentDetail
 
 
-class ApiNotificationType(Enum):
+class ApiNotificationType(str, Enum):
     Payment = "Payment"
     Order = "Order"
     Form = "Form"
@@ -32,7 +32,7 @@ class OrganizationNotificationResultData(BaseModel):
 class OrganizationNotificationResultContent(BaseModel):
     eventType: Literal[ApiNotificationType.Organization]
     data: OrganizationNotificationResultData
-    # metadata: dict[str, Any] | None = None # not sure
+    metadata: None = None  # not sure
 
 
 class OrderNotificationResultContent(BaseModel):
@@ -58,7 +58,7 @@ class PayementNotificationResultContent(BaseModel):
 class FormNotificationResultContent(BaseModel):
     eventType: Literal[ApiNotificationType.Form]
     data: FormPublicModel
-    # metadata: dict[str, Any] | None = None # not sure
+    metadata: dict[str, Any] | None = None  # not sure
 
 
 NotificationResultContent = (
