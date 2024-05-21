@@ -254,7 +254,7 @@ class PaymentDetail(BaseModel):
     cashOutState: enums.PaymentCashOutState | None = None
     paymentReceiptUrl: str | None = None
     fiscalReceiptUrl: str | None = None
-    id: int | None = None
+    id: int
     amount: int | None = None
     amountTip: int | None = None
     date: datetime | None = None
