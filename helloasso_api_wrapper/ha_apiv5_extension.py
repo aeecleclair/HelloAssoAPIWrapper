@@ -61,18 +61,30 @@ class HaApiV5Extension(HaApiV5):
         model: type[Model],
         params: dict | None = None,
         method: str | None = "GET",
-        data: dict | None = None,
-        json: dict | None = None,
+        body: BaseModel | None = None,
         headers: dict | None = None,
         include_auth: bool = True,
     ) -> Model:
+        """
+        Call the request using HaApiV5 and then serialize the response.
+
+        The `body` will be serialized to json using Pydantic and passed to HaAPIV5.
+        """
+
+        # The default json serializer used by Requests does not handle datetime
+        # We will use Pydantic serializer instead then pass the body as `data`, including an "application/json" header
+        # See https://github.com/psf/requests/issues/3947
+        data = body.model_dump_json() if body else None
+        if headers is None:
+            headers = {}
+        headers["Content-type"] = "application/json"
+
         sub_path = "/v5" + sub_path
         response = self.call(
             sub_path,
             params=params,
             method=method,
             data=data,
-            json=json,
             headers=headers,
             include_auth=include_auth,
         ).json()

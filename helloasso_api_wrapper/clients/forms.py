@@ -23,7 +23,7 @@ class Forms(GenericClient):
         return self.api.callAndSerialize(
             f"/organizations/{organization_slug}/forms/{form_type}/action/quick-create",
             FormQuickCreateModel,
-            json=quick_form_create_request_body.model_dump(),
+            body=quick_form_create_request_body,
             method="POST",
         )
 

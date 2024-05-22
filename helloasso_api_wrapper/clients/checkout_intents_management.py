@@ -33,6 +33,6 @@ class CheckoutIntentsManagement(GenericClient):
         return self.api.callAndSerialize(
             f"/organizations/{organization_slug}/checkout-intents",
             InitCheckoutResponse,
-            json=init_checkout_body.model_dump(),
+            body=init_checkout_body,
             method="POST",
         )

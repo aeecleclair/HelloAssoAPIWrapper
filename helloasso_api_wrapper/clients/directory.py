@@ -27,7 +27,7 @@ class Directory(GenericClient):
                 "pageSize": page_size,
                 "continuationToken": continuation_token,
             },
-            json=list_forms_request.model_dump(),
+            body=list_forms_request,
             method="POST",
         )
 
@@ -48,6 +48,6 @@ class Directory(GenericClient):
                 "pageSize": page_size,
                 "continuationToken": continuation_token,
             },
-            json=list_organizations_request_body.model_dump(),
+            body=list_organizations_request_body,
             method="POST",
         )
