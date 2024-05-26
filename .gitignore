@@ -16,3 +16,5 @@ __pycache__
 
 helloasso_api_wrapper.egg-info
 build
+
+.env.test
