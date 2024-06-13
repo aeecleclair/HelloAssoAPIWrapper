@@ -11,7 +11,7 @@ setup(
     packages=find_packages(exclude=("tests", "docs")),
     install_requires=[
         "helloasso-apiv5==1.0.0",
-        "pydantic==2.5.0",
+        "pydantic>=2.5",
     ],
     python_requires=">=3.6",
 )
