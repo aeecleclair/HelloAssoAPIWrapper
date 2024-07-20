@@ -4,7 +4,7 @@ from helloasso_api_wrapper.models.organization import OrganizationLightModel
 
 class Users(GenericClient):
     def get_my_organizations(self) -> list[OrganizationLightModel]:
-        return self.api.callAndSerializeList(
+        return self.api.callAndSerialize(
             "/users/me/organizations",
-            OrganizationLightModel,
+            list[OrganizationLightModel],
         )

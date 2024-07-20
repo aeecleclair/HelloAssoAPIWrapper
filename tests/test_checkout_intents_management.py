@@ -28,7 +28,7 @@ def test_init_a_checkout() -> None:
 
 
 def test_retrieve_a_checkout_intent() -> None:
-    hello_asso.retrieve_a_checkout_intent(
+    hello_asso.checkout_intents_management.retrieve_a_checkout_intent(
         organization_slug,
         checkout_intent_id,
     )

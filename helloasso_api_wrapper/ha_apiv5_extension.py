@@ -6,7 +6,7 @@ from helloasso_api import HaApiV5
 from pydantic import BaseModel, TypeAdapter
 
 
-class HaApiV5Extension(HaApiV5):
+class HaApiV5Extension(HaApiV5):  # type: ignore
     """
     The class inherit from HaApiV5 and add some methods to serialize the response of the API.
     """
@@ -53,7 +53,7 @@ class HaApiV5Extension(HaApiV5):
         model: type[Model],
     ) -> Model:
         type_adapter = TypeAdapter(model)
-        return type_adapter.validate_python(obj)
+        return type_adapter.validate_python(obj)  # type: ignore
 
     def callAndSerialize(
         self,

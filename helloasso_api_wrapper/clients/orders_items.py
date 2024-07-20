@@ -3,9 +3,7 @@ from datetime import datetime
 from helloasso_api_wrapper.clients.generic_client import GenericClient
 from helloasso_api_wrapper.models.enums import FormType, SortField, SortOrder
 from helloasso_api_wrapper.models.forms import (
-    FormPublicModel,
     FormQuickCreateModel,
-    FormQuickCreateRequest,
 )
 from helloasso_api_wrapper.models.statistics import Item
 

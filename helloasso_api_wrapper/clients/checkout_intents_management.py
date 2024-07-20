@@ -10,7 +10,7 @@ class CheckoutIntentsManagement(GenericClient):
     def retrieve_a_checkout_intent(
         self,
         organization_slug: str,
-        checkout_intent_id: str,
+        checkout_intent_id: int,
     ) -> CheckoutIntentResponse:
         """
         Retrieve a checkout intent, with the order if the payment has been authorized.
