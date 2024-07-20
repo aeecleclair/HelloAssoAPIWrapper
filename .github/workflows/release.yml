@@ -1,0 +1,32 @@
+name: Build Python module and publish to Pypi
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: release
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Hatch
+        run: pip install hatch
+
+      - name: Build Python module
+        run: hatch build
+
+      - name: Publish package distributions to PyPI
+        # https://docs.pypi.org/trusted-publishers/using-a-publisher/
+        uses: pypa/gh-action-pypi-publish@release/v1
