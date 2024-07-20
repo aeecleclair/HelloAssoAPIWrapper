@@ -133,7 +133,7 @@ class PaymentItem(BaseModel):
     shareAmount: int | None = None
     shareItemAmount: int | None = None
     shareOptionsAmount: int | None = None
-    id: int | None = None
+    id: int | None = None  # order id
     amount: int | None = None
     type: enums.TierType | None = None
     initialAmount: int | None = None

@@ -30,7 +30,7 @@ class CheckoutPayer(BaseModel):
 
 
 class InitCheckoutResponse(BaseModel):
-    id: int
+    id: int  # checkoutIntentId
     redirectUrl: str
 
 
