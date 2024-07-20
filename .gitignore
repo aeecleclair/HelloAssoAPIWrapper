@@ -18,3 +18,7 @@ helloasso_api_wrapper.egg-info
 build
 
 .env.test
+
+main.py
+
+dist

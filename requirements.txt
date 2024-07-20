@@ -1,2 +1,2 @@
-helloasso-apiv5==1.0.0
-pydantic>=2.5
+helloasso-apiv5==1.0.0 # NOTE: helloasso-apiv5 version must be the same as pyproject.toml's dependencies configuration 
+pydantic>=2.5 # NOTE: pydantic version must be the same as pyproject.toml's dependencies configuration 
