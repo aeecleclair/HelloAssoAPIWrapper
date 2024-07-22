@@ -38,3 +38,8 @@ Then you can use the [datamodel-codegen](https://docs.pydantic.dev/latest/integr
 ```bash
 datamodel-codegen --input HelloAssoV5OpenAPI.json --output HelloAssoAPIWrapper
 ```
+
+Make a release on Pypi
+
+You need to edit HelloAssoAPIWrapper version in [helloasso_api_wrapper/\_\_about\_\_.py](./helloasso_api_wrapper/__about__.py). Then make a release on GitHub and add a tag. The tag should match v*.*.\*.
+
