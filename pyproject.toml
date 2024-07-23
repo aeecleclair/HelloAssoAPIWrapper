@@ -129,5 +129,5 @@ strict = true
 disallow_any_generics = false
 
 [[tool.mypy.overrides]]
-module = ["helloasso_api"]
+module = ["helloasso_api", "helloasso_api.exceptions"]
 ignore_missing_imports = true
