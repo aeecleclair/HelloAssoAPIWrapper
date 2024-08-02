@@ -255,7 +255,7 @@ class PaymentDetail(BaseModel):
     paymentReceiptUrl: str | None = None
     fiscalReceiptUrl: str | None = None
     id: int
-    amount: int | None = None
+    amount: int
     amountTip: int | None = None
     date: datetime | None = None
     paymentMeans: enums.PaymentMeans | None = None
