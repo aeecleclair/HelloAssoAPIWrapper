@@ -28,6 +28,10 @@ class CheckoutIntentsManagement(GenericClient):
     ) -> InitCheckoutResponse:
         """
         https://www.helloasso.com/public-documents/documents_api/documentation_checkout.pdf
+
+        Note:
+         - the first name must not be the same as the last name
+         - some first names and names are not accepted, like "test"
         """
         # Tested, works
         return self.api.callAndSerialize(
